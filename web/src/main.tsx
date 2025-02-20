@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { VisibilityProvider } from './providers/VisibilityProvider';
+import { GlobalProvider } from './providers/GlobalStateProvider';
 import App from './components/App';
 import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <VisibilityProvider>
+    <GlobalProvider>
       <App />
-    </VisibilityProvider>
+    </GlobalProvider>
   </React.StrictMode>,
 );
