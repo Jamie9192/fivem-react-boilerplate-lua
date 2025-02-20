@@ -14,18 +14,16 @@ const defaultGlobals: GlobalStateI = {
 
 const GlobalContext = createContext<[GlobalStateI, (state: string, value: any) => void, (newState: Record<string, any>) => void]>([defaultGlobals, () => {}, () => {}]);
 
-export const GlobalProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const GlobalProvider: React.FC<{ children: React.ReactNode }> = ({ children }: { children: React.ReactNode }) => {
 
   const [globalState, setFullState] = useState<GlobalStateI>(defaultGlobals);
   
   const setGlobalState = (state: string, value: any): void => setFullState((prev: GlobalStateI) => ({ ...prev, [state]: value }));
   const setGlobalStateObject = (newState: Record<string, any>): void => setFullState((prev: GlobalStateI) => ({ ...prev, ...newState }));
   
-  
   useNuiEvent("state", (data: {[key: string]: any}) => setFullState((prev: GlobalStateI) => ({ ...prev, ...data })));
 
   useEffect(() => {
-      // Only attach listener when we are visible
       if (!globalState.visible) return;
   
       const keyHandler = (e: KeyboardEvent) => {
