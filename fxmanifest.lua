@@ -1,9 +1,5 @@
 fx_version "cerulean"
-
-description "Basic React (TypeScript) & Lua Game Scripts Boilerplate"
-author "Project Error"
 version '1.0.0'
-repository 'https://github.com/project-error/fivem-react-boilerplate-lua'
 
 lua54 'yes'
 
@@ -13,6 +9,7 @@ games {
 }
 
 ui_page 'web/build/index.html'
+-- Credits: "Project Error" for their react-boilerplate which was forked and modified for this project
 
 client_script "client/**/*"
 server_script "server/**/*"
